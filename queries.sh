@@ -17,7 +17,7 @@ echo -e "\nAverage number of goals in all games from the winning teams rounded t
 echo $($PSQL "select round(avg(winner_goals),2) from games")
 
 echo -e "\nAverage number of goals in all games from both teams:"
-echo $($PSQL "select avg(winner_goals) + avg(opponent_goals) from games")
+echo $($PSQL "select round(avg(winner_goals) + avg(opponent_goals),16) from games")
 
 echo -e "\nMost goals scored in a single game by one team:"
 echo $($PSQL "select winner_goals from games order by winner_goals desc limit 1")
